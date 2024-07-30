@@ -70,10 +70,10 @@ function firstRecurringCharacter2(input) {
   if (!Array.isArray(input)) {
     return "Not Arr!";
   }
-  
+
   const map = {};
   for (let i = 0; i < input.length; i++) {
-    if (map[input[i]]) {
+    if (map[input[i]] !== undefined) { // key can be 0 - falsy value
       return input[i];
     }
     map[input[i]] = i;
