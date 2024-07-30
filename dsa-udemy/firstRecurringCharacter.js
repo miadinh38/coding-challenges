@@ -52,9 +52,38 @@ function firstRecurringCharacter1(input) {
   return undefined;
 }
 
+// Solution 3: O(n)
+/* convert arr to hash table
+array = [2,5,1,2,3,5,1,2,4]
+map = {
+  2: 0,
+  5: 1,
+  1: 2,
+  ...
+}
+*/
+function firstRecurringCharacter2(input) {
+  //check input
+  if (!input.length) {
+    return "Empty Arr!";
+  }
+  if (!Array.isArray(input)) {
+    return "Not Arr!";
+  }
+  
+  const map = {};
+  for (let i = 0; i < input.length; i++) {
+    if (map[input[i]]) {
+      return input[i];
+    }
+    map[input[i]] = i;
+  }
+  return undefined;
+}
+
 //Test case
-console.log(firstRecurringCharacter1([2, 5, 5, 2, 3, 5, 1, 2, 4])); //5
-console.log(firstRecurringCharacter1([2, 1, 1, 2, 3, 5, 1, 2, 4])); //1
-console.log(firstRecurringCharacter1([])); // Empty Arr!
-console.log(firstRecurringCharacter1([2, 3, 4, 5])); //undefined
-console.log(firstRecurringCharacter1("hello")); //Not Arr!
+console.log(firstRecurringCharacter2([2, 5, 5, 2, 3, 5, 1, 2, 4])); //5
+console.log(firstRecurringCharacter2([2, 1, 1, 2, 3, 5, 1, 2, 4])); //1
+console.log(firstRecurringCharacter2([])); // Empty Arr!
+console.log(firstRecurringCharacter2([2, 3, 4, 5])); //undefined
+console.log(firstRecurringCharacter2("hello")); //Not Arr!
